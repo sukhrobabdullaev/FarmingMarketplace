@@ -1,5 +1,6 @@
 import "./Home.css";
 import CountUp from "react-countup";
+
 function Home() {
   return (
     <div className="main-bg pt-40">
