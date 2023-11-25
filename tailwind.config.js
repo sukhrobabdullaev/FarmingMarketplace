@@ -5,7 +5,14 @@ export default {
     extend: {
       fontFamily: {
         sans: ["ui-sans-serif", "system-ui"],
-        montserrot: ['Montserrat',"sans-serif"]
+        montserrot: ["Montserrat", "sans-serif"],
+      },
+      screens: {
+        sm: "480px",
+        md: "768px",
+        lg: "976px",
+        xl: "1024px",
+        "2xl": "1440px",
       },
     },
   },
