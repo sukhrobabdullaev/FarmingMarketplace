@@ -16,9 +16,9 @@ const AuthProvider = ({ children }) => {
             headers: { Authorization: `Bearer ${token}` },
           })
           .then((res) => {
-            if (window.location.pathname != "/farmer") {
-              window.location.pathname = "/farmer";
-            }
+            // if (window.location.pathname != "/farmer") {
+            //   window.location.pathname = "/farmer";
+            // }
             console.log(res);
             console.log("email: " + res.data.email);
             console.log("username: " + res.data.full_name);

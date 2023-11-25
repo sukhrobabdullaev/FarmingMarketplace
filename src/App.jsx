@@ -20,6 +20,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Chemicals from "./pages/users/Chemicals";
 import Farming from "./pages/users/Farming";
+import ProductCategory from "./pages/users/ProductCategory";
 
 function App() {
   return (
@@ -54,6 +55,14 @@ function App() {
           element={
             <RootLayout>
               <Farmer />
+            </RootLayout>
+          }
+        />
+        <Route
+          path="/farmer/category"
+          element={
+            <RootLayout>
+              <ProductCategory />
             </RootLayout>
           }
         />

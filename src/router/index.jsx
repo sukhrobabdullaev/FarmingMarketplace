@@ -7,6 +7,7 @@ import SignUp from "../pages/SignUp";
 import Farmer from "../pages/Farmer";
 import Farming from "../pages/users/Farming";
 import Chemicals from "../pages/users/Chemicals";
+import ProductCategory from "../pages/users/ProductCategory";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,14 @@ const router = createBrowserRouter([
     element: (
       <RootLayout>
         <Farmer />
+      </RootLayout>
+    ),
+  },
+  {
+    path: "/farmer/category",
+    element: (
+      <RootLayout>
+        <ProductCategory />
       </RootLayout>
     ),
   },
