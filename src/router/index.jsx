@@ -4,6 +4,9 @@ import RootLayout from "../layout/RootLayout";
 import Main from "../pages/Main";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import Farmer from "../pages/Farmer";
+import Farming from "../pages/users/Farming";
+import Chemicals from "../pages/users/Chemicals";
 
 const router = createBrowserRouter([
   {
@@ -11,14 +14,6 @@ const router = createBrowserRouter([
     element: (
       <RootLayout>
         <Home />
-      </RootLayout>
-    ),
-  },
-  {
-    path: "/login",
-    element: (
-      <RootLayout>
-        <Main />
       </RootLayout>
     ),
   },
@@ -35,6 +30,30 @@ const router = createBrowserRouter([
     element: (
       <RootLayout>
         <SignUp />
+      </RootLayout>
+    ),
+  },
+  {
+    path: "/farmer",
+    element: (
+      <RootLayout>
+        <Farmer />
+      </RootLayout>
+    ),
+  },
+  {
+    path: "/farming",
+    element: (
+      <RootLayout>
+        <Farming />
+      </RootLayout>
+    ),
+  },
+  {
+    path: "/chemicals",
+    element: (
+      <RootLayout>
+        <Chemicals />
       </RootLayout>
     ),
   },
