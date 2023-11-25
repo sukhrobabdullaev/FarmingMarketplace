@@ -14,13 +14,12 @@ import AppLoader from "./AppLoader";
 
 const Profile = () => {
   let navigate = useNavigate();
+
   const { data: userProfile, isLoading, isError } = useUserData();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   if (isLoading) {
-    return (
-      <AppLoader/>
-    );
+    return <AppLoader />;
   }
 
   if (isError) {
@@ -58,7 +57,9 @@ const Profile = () => {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar sx={{ width: 40, height: 40, backgroundColor: 'blue' }}>{initials}</Avatar>
+          <Avatar sx={{ width: 40, height: 40, backgroundColor: "blue" }}>
+            {initials}
+          </Avatar>
         </IconButton>
       </Tooltip>
       <Menu

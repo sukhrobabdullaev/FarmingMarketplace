@@ -9,6 +9,7 @@ import Farming from "../pages/users/Farming";
 import Chemicals from "../pages/users/Chemicals";
 import ProductCategory from "../pages/users/ProductCategory";
 import ProductCategoryCreate from "../pages/users/ProductCategoryCreate";
+import Dashboard from "../components/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
     element: (
       <RootLayout>
         <SignUp />
+      </RootLayout>
+    ),
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <RootLayout>
+        <Dashboard />
       </RootLayout>
     ),
   },

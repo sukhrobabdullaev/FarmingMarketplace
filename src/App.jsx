@@ -1,16 +1,3 @@
-// import { RouterProvider } from "react-router-dom";
-// import router from "./router";
-
-// function App() {
-//   return (
-//     <>
-//       <RouterProvider router={router} />
-//     </>
-//   );
-// }
-
-// export default App;
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import RootLayout from "./layout/RootLayout";
@@ -22,6 +9,7 @@ import Chemicals from "./pages/users/Chemicals";
 import Farming from "./pages/users/Farming";
 import ProductCategory from "./pages/users/ProductCategory";
 import ProductCategoryCreate from "./pages/users/ProductCategoryCreate";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -48,6 +36,14 @@ function App() {
           element={
             <RootLayout>
               <Farming />
+            </RootLayout>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <RootLayout>
+              <Dashboard />
             </RootLayout>
           }
         />
