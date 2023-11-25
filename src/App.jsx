@@ -21,7 +21,7 @@ import SignIn from "./pages/SignIn";
 import Chemicals from "./pages/users/Chemicals";
 import Farming from "./pages/users/Farming";
 import ProductCategory from "./pages/users/ProductCategory";
-import ProductCategoryCreate from "./pages/users/ProductCategoryCreate";
+import Product from "./pages/users/Product";
 
 function App() {
   return (
@@ -68,10 +68,10 @@ function App() {
           }
         />
         <Route
-          path="/farmer/product-category/create"
+          path="/farmer/product"
           element={
             <RootLayout>
-              <ProductCategoryCreate />
+              <Product />
             </RootLayout>
           }
         />

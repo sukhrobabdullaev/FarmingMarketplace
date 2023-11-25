@@ -1,27 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { Button, Modal, Input } from "antd";
+import { Button, Modal, Input, Select } from "antd";
 import { useNavigate } from "react-router-dom";
 
 export const baseUrl = "https://api.farm.ustadev.uz/v1";
 
-const ProductCategory = () => {
+const Product = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+
+  const [category, setCategory] = useState([]);
+
   const [list, setList] = useState([]);
+
   const [input, setInput] = useState("");
+
   const [editedInput, setEditedInput] = useState("");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [isEditOpen, setIsEditOpen] = useState(false);
 
+	const [name, setName] = useState("");
+	const [photo, setPhoto] = useState("");
+
   const showModal = () => {
     setIsModalOpen(true);
   };
-
   const handleEditOk = (id) => {
     setIsEditOpen(false);
-    fetch(`${baseUrl}/user/product-category/update?id=${id}`, {
+    fetch(`${baseUrl}/user/product/update?id=${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +38,7 @@ const ProductCategory = () => {
     })
       .then((res) => res.json())
       .then((res) =>
-        fetch("https://api.farm.ustadev.uz/v1/user/product-category/index", {
+        fetch("https://api.farm.ustadev.uz/v1/user/product/index", {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then((res) => res.json())
@@ -42,9 +49,8 @@ const ProductCategory = () => {
   const handleEditCancel = () => {
     setIsEditOpen(false);
   };
-
   const handleDelete = (id) => {
-    fetch(`${baseUrl}/user/product-category/delete?id=${id}`, {
+    fetch(`${baseUrl}/user/product/delete?id=${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -52,7 +58,7 @@ const ProductCategory = () => {
     })
       .then((res) => res.json())
       .then(() =>
-        fetch("https://api.farm.ustadev.uz/v1/user/product-category/index", {
+        fetch("https://api.farm.ustadev.uz/v1/user/product/index", {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then((res) => res.json())
@@ -61,7 +67,7 @@ const ProductCategory = () => {
   };
   const handleOk = () => {
     setIsModalOpen(false);
-    fetch(`${baseUrl}/user/product-category/create`, {
+    fetch(`${baseUrl}/user/product/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +77,7 @@ const ProductCategory = () => {
     })
       .then((res) => res.json())
       .then((res) =>
-        fetch("https://api.farm.ustadev.uz/v1/user/product-category/index", {
+        fetch("https://api.farm.ustadev.uz/v1/user/product/index", {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then((res) => res.json())
@@ -82,10 +88,9 @@ const ProductCategory = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
   const handleEdit = (id) => {
     setIsEditOpen(true);
-    fetch(`${baseUrl}/user/product-category/view?id=${id}`, {
+    fetch(`${baseUrl}/user/product/view?id=${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -93,34 +98,24 @@ const ProductCategory = () => {
       .then((res) => res.json())
       .then((res) => setEditedInput(res));
   };
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
 
   useEffect(() => {
     fetch("https://api.farm.ustadev.uz/v1/user/product-category/index", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
-      .then((res) => setList(res.result));
+      .then((res) => setCategory(res.result));
+    fetch(`${baseUrl}/user/product/index`, {
+      headers: { Authorization: `Bearer ${token}` },
+    }).then((res) => res.json());
   }, []);
 
   return (
     <div className="mt-32 max-w-[1200px] mx-auto">
-      <Button onClick={showModal}>Open Modal</Button>
-      <Modal
-        open={isEditOpen}
-        onOk={() => handleEditOk(editedInput.id)}
-        onCancel={handleEditCancel}
-        okType="default"
-        centered
-      >
-        <div className="mt-6">
-          <Input
-            value={editedInput.name}
-            onChange={(e) =>
-              setEditedInput({ ...editedInput, name: e.target.value })
-            }
-          />
-        </div>
-      </Modal>
+      <Button onClick={showModal}>Open Modal 2222 </Button>
       <Modal
         open={isModalOpen}
         onOk={handleOk}
@@ -128,17 +123,41 @@ const ProductCategory = () => {
         okType="default"
         centered
       >
-        <div>
-          <h1 className="mb-5 text-2xl font-bold">Kategoriya qo'shish</h1>
+        <div className="flex flex-col gap-5">
+          <h1 className="mb-5 text-2xl font-bold">Mahsulot qo'shish</h1>
           <Input
-            placeholder="Kategoriya nomi"
-            onChange={(e) => setInput(e.target.value)}
-            value={input}
+            placeholder="Mahsulot nomi"
           />
+          <select
+            name=""
+            id=""
+            defaultValue={""}
+            className="border-2 border-black w-full py-2 rounded-4"
+          >
+            {category.map((item) => (
+              <option key={item.id} value={item.name}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+          <input type="file" className="w-full" />
+          <Input placeholder="Narxi" type="number" min={0} />
+          <textarea
+            className="w-full border-2 border-black"
+            placeholder="Subtext"
+            cols="30"
+            rows="5"
+          ></textarea>
+          <textarea
+            className="w-full border-2 border-black"
+            placeholder="Body	"
+            cols="30"
+            rows="10"
+          ></textarea>
         </div>
       </Modal>
       <h1 className="mt-5">Category index</h1>
-      <table border="1" className="w-full">
+      {/* <table border="1" className="w-full">
         <tbody>
           {list.map((item, index) => (
             <tr
@@ -154,9 +173,9 @@ const ProductCategory = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 };
 
-export default ProductCategory;
+export default Product;
