@@ -21,6 +21,7 @@ import SignIn from "./pages/SignIn";
 import Chemicals from "./pages/users/Chemicals";
 import Farming from "./pages/users/Farming";
 import ProductCategory from "./pages/users/ProductCategory";
+import ProductCategoryCreate from "./pages/users/ProductCategoryCreate";
 
 function App() {
   return (
@@ -59,10 +60,18 @@ function App() {
           }
         />
         <Route
-          path="/farmer/category"
+          path="/farmer/product-category/index"
           element={
             <RootLayout>
               <ProductCategory />
+            </RootLayout>
+          }
+        />
+        <Route
+          path="/farmer/product-category/create"
+          element={
+            <RootLayout>
+              <ProductCategoryCreate />
             </RootLayout>
           }
         />

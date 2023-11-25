@@ -94,7 +94,7 @@ function SignIn({ setLogin }) {
     try {
       const res = await API.login(payload);
       if (res.status === 200) {
-        navigate("/details", { replace: true });
+        navigate("/farmer", { replace: true });
         window.location.reload();
         localStorage.setItem("token", res.data?.token);
         dispatch.auth.login(res.data);

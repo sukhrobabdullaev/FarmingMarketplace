@@ -8,6 +8,7 @@ import Farmer from "../pages/Farmer";
 import Farming from "../pages/users/Farming";
 import Chemicals from "../pages/users/Chemicals";
 import ProductCategory from "../pages/users/ProductCategory";
+import ProductCategoryCreate from "../pages/users/ProductCategoryCreate";
 
 const router = createBrowserRouter([
   {
@@ -43,10 +44,18 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/farmer/category",
+    path: "/farmer/product-category/list",
     element: (
       <RootLayout>
         <ProductCategory />
+      </RootLayout>
+    ),
+  },
+  {
+    path: "/farmer/product-category/create",
+    element: (
+      <RootLayout>
+        <ProductCategoryCreate />
       </RootLayout>
     ),
   },

@@ -4,7 +4,6 @@ import { BASE_URL } from "../react-query/query";
 import AppLoader from "./AppLoader";
 
 const AuthProvider = ({ children }) => {
-
   const [isInitilized, setIsInitilized] = useState(false);
 
   useEffect(() => {
@@ -26,11 +25,11 @@ const AuthProvider = ({ children }) => {
           })
           .catch((err) => {
             setIsInitilized(true);
-            if (window.location.pathname != "/") window.location.pathname = "/";
+            // if (window.location.pathname != "/") window.location.pathname = "/";
           });
       } else {
         setIsInitilized(true);
-        if (window.location.pathname != "/") window.location.pathname = "/";
+        // if (window.location.pathname != "/") window.location.pathname = "/";
       }
     }
     if (!isInitilized) {

@@ -105,7 +105,7 @@
 
 // export default SignUp;
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Form, Input, Radio } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
@@ -116,15 +116,23 @@ import { useState } from "react";
 import ReactInputVerificationCode from "react-input-verification-code";
 import { toast } from "react-toastify";
 import bg from "../assets/bg.jpg";
+import { baseUrl } from "./users/ProductCategory";
 
 function SignUp({ setLogin }) {
   const navigate = useNavigate();
   const [smsCode, setSmsCode] = useState(true);
   const [code, setCode] = useState();
+  const [roles, setRoles] = useState([]);
   const {
     register,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    fetch(`${baseUrl}/user/auth/roles`)
+      .then((res) => res.json())
+      .then((res) => setRoles(res));
+  }, []);
 
   const { mutate } = useMutation(async (payload) => {
     return await API.regiserUser(payload)
@@ -173,14 +181,24 @@ function SignUp({ setLogin }) {
               onFinish={onSubmit}
               autoComplete="on"
             >
-              <Radio.Group>
-                <Radio value="farmer" className="text-white">
-                  Farmer
-                </Radio>
-                <Radio value="fertilizer" className="text-white">
-                  Fertilizer seller
-                </Radio>
-              </Radio.Group>
+              <Form.Item
+                className="text-black"
+                name="role"
+                rules={[
+                  {
+                    required: true,
+                    message: "Iltimos 'role'-ni kiriting!",
+                  },
+                ]}
+              >
+                <Radio.Group>
+                  {Object.entries(roles).map((role) => (
+                    <Radio value={role[0]} className="text-white">
+                      {role[1]}
+                    </Radio>
+                  ))}
+                </Radio.Group>
+              </Form.Item>
               <Form.Item
                 className="text-black"
                 name="full_name"
