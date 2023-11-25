@@ -1,10 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import RootLayout from "../layout/RootLayout";
-import Chemicals from "../pages/users/Chemicals";
-import Farming from "../pages/users/Farming";
-import SignUp from "../pages/SignUp";
+import Main from "../pages/Main";
 import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
+import Farmer from "../pages/Farmer";
+import Farming from "../pages/users/Farming";
+import Chemicals from "../pages/users/Chemicals";
+import ProductCategory from "../pages/users/ProductCategory";
+import ProductCategoryCreate from "../pages/users/ProductCategoryCreate";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,18 +20,10 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/chemicals",
+    path: "/signIn",
     element: (
       <RootLayout>
-        <Chemicals />
-      </RootLayout>
-    ),
-  },
-  {
-    path: "/farming",
-    element: (
-      <RootLayout>
-        <Farming />
+        <SignIn />
       </RootLayout>
     ),
   },
@@ -39,10 +36,42 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/signIn",
+    path: "/farmer",
     element: (
       <RootLayout>
-        <SignIn />
+        <Farmer />
+      </RootLayout>
+    ),
+  },
+  {
+    path: "/farmer/product-category/list",
+    element: (
+      <RootLayout>
+        <ProductCategory />
+      </RootLayout>
+    ),
+  },
+  {
+    path: "/farmer/product-category/create",
+    element: (
+      <RootLayout>
+        <ProductCategoryCreate />
+      </RootLayout>
+    ),
+  },
+  {
+    path: "/farming",
+    element: (
+      <RootLayout>
+        <Farming />
+      </RootLayout>
+    ),
+  },
+  {
+    path: "/chemicals",
+    element: (
+      <RootLayout>
+        <Chemicals />
       </RootLayout>
     ),
   },
