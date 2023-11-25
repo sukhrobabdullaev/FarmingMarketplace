@@ -1,8 +1,8 @@
 import React from "react";
 import { Card, Col, Row } from "antd";
-import { useUserData } from "../hooks/useUserData";
+import { useUserData } from "../../hooks/useUserData";
 import { useNavigate } from "react-router-dom";
-import AppLoader from "./AppLoader";
+import AppLoader from "../AppLoader";
 import { ArrowDownOutlined } from "@ant-design/icons";
 
 const Dashboard = () => {
@@ -19,12 +19,17 @@ const Dashboard = () => {
   }
   //   console.log(userProfile);
   return (
-    <div style={{ backgroundImage: "url(./img/dash_bgUpdated.jpg)", backgroundPosition: "center" }}>
+    <div
+      style={{
+        backgroundImage: "url(/img/dash_bgUpdated.jpg)",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+      }}
+    >
       <div className="pt-24 max-w-[1200px] mx-auto">
         <h3 className="text-blue-600 text-center text-[30px] mb-6">
           DASHBOARD
         </h3>
-        {/* <div className=> */}
         <Row gutter={16} className="flex justify-around ">
           <Col span={8}>
             <Card title="My Details" bordered={false} className="bg-blue-400 ">
@@ -70,7 +75,6 @@ const Dashboard = () => {
             </Card>
           </Col>
         </Row>
-        {/* </div> */}
       </div>
     </div>
   );

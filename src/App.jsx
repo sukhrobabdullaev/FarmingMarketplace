@@ -9,7 +9,8 @@ import Chemicals from "./pages/users/Chemicals";
 import Farming from "./pages/users/Farming";
 import ProductCategory from "./pages/users/ProductCategory";
 import ProductCategoryCreate from "./pages/users/ProductCategoryCreate";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/farmers/Dashboard";
+import SelDash from "./components/sellers/Dash";
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
           }
         />
         <Route
-          path="/dashboard"
+          path="/farmer/dashboard"
           element={
             <RootLayout>
               <Dashboard />
@@ -48,7 +49,7 @@ function App() {
           }
         />
         <Route
-          path="/farmer"
+          path="/farmer/product"
           element={
             <RootLayout>
               <Farmer />
@@ -84,6 +85,14 @@ function App() {
           element={
             <RootLayout>
               <SignIn />
+            </RootLayout>
+          }
+        />
+        <Route
+          path="/seller/dashboard"
+          element={
+            <RootLayout>
+              <SelDash />
             </RootLayout>
           }
         />

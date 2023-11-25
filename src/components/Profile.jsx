@@ -40,12 +40,12 @@ const Profile = () => {
     setAnchorEl(null);
   };
 
-  const initials = userProfile.full_name
-    .split(" ")
-    .map((word, index) => (index === 0 ? word[0].toUpperCase() : ""))
-    .join("");
+  // const initials = userProfile.full_name
+  //   .split(" ")
+  //   .map((word, index) => (index === 0 ? word[0].toUpperCase() : ""))
+  //   .join("");
 
-  console.log(initials);
+  // console.log(initials);
   return (
     <div>
       <Tooltip title="Mening accountim">
@@ -58,7 +58,7 @@ const Profile = () => {
           aria-expanded={open ? "true" : undefined}
         >
           <Avatar sx={{ width: 40, height: 40, backgroundColor: "blue" }}>
-            {initials}
+            {/* {initials} */} s
           </Avatar>
         </IconButton>
       </Tooltip>

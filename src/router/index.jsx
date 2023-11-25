@@ -10,6 +10,7 @@ import Chemicals from "../pages/users/Chemicals";
 import ProductCategory from "../pages/users/ProductCategory";
 import ProductCategoryCreate from "../pages/users/ProductCategoryCreate";
 import Dashboard from "../components/Dashboard";
+import SelDash from "../components/sellers/Dash";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/dashboard",
+    path: "/farmer/dashboard",
     element: (
       <RootLayout>
         <Dashboard />
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/farmer",
+    path: "/farmer/product",
     element: (
       <RootLayout>
         <Farmer />
@@ -81,6 +82,14 @@ const router = createBrowserRouter([
     element: (
       <RootLayout>
         <Chemicals />
+      </RootLayout>
+    ),
+  },
+  {
+    path: "/seller/dashboard",
+    element: (
+      <RootLayout>
+        <SelDash />
       </RootLayout>
     ),
   },

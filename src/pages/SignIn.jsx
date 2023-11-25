@@ -1,89 +1,14 @@
-// import React from "react";
-// import { Button, Form, Input } from "antd";
-// import bg from "../assets/bg.jpg";
-
-// const SignIn = () => {
-//   const onFinish = (values) => {
-//     console.log("Success:", values);
-//   };
-
-//   const onFinishFailed = (errorInfo) => {
-//     console.log("Failed:", errorInfo);
-//   };
-//   return (
-//     <div
-//       className="w-screen h-screen flex justify-center items-center bg-cover bg-center bg-no-repeat"
-//       style={{ backgroundImage: `url(${bg})` }}
-//     >
-//       <div
-//         className="text-white p-8"
-//         style={{ backgroundColor: "rgba(0,0,0,0.47)" }}
-//       >
-//         <h1 className="text-center mb-6 text-3xl font-bold">Sign in</h1>
-//         <Form
-//           name="basic"
-//           style={{
-//             width: "400px",
-//           }}
-//           initialValues={{
-//             remember: true,
-//           }}
-//           onFinish={onFinish}
-//           onFinishFailed={onFinishFailed}
-//           autoComplete="off"
-//         >
-//           <Form.Item
-//             name="email"
-//             rules={[
-//               {
-//                 required: true,
-//                 message: "Please input your email!",
-//               },
-//             ]}
-//           >
-//             <Input placeholder="Email" />
-//           </Form.Item>
-
-//           <Form.Item
-//             name="password"
-//             rules={[
-//               {
-//                 required: true,
-//                 message: "Please input your password!",
-//               },
-//             ]}
-//           >
-//             <Input.Password placeholder="Password" />
-//           </Form.Item>
-
-//           <Form.Item className="flex justify-center">
-//             <Button
-//               className="text-white"
-//               style={{ backgroundColor: "#FDCC0D" }}
-//               htmlType="submit"
-//             >
-//               Sign in
-//             </Button>
-//           </Form.Item>
-//         </Form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SignIn;
-
 import React from "react";
 import { Button, Form, Input } from "antd";
 import { useMutation } from "react-query";
 import { useForm } from "react-hook-form";
 import { API } from "../react-query/query";
 import { dispatch } from "../redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import bg from "../assets/bg.jpg";
 
-function SignIn({ setLogin }) {
+function SignIn() {
   const {
     register,
     formState: { errors },
@@ -93,12 +18,22 @@ function SignIn({ setLogin }) {
   const { mutate } = useMutation(async (payload) => {
     try {
       const res = await API.login(payload);
+      console.log(res);
       if (res.status === 200) {
-        navigate("/dashboard", { replace: true });
-        window.location.reload();
+        // window.location.reload();
         localStorage.setItem("token", res.data?.token);
         dispatch.auth.login(res.data);
         toast.success("Wow so easy!");
+        fetch(`https://api.farm.ustadev.uz/v1/user/user/profile`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.role[0] === "farmer")
+              navigate("/farmer/dashboard", { replace: true });
+            else if (res.role[0] === "seller")
+              navigate("/seller/dashboard", { replace: true });
+          });
       } else {
         console.log("xatolik");
       }
@@ -160,12 +95,6 @@ function SignIn({ setLogin }) {
               className="md:p-2"
             />
           </Form.Item>
-          {/* <span
-            style={{ cursor: "pointer", color: "orange" }}
-            onClick={() => setLogin("kirish")}
-          >
-            Sign Up
-          </span> */}
           <Form.Item>
             <Button
               htmlType="submit"
