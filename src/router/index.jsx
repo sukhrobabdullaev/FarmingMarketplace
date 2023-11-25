@@ -38,7 +38,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/farmer/dashboard",
+    path: "/seller/dashboard",
     element: (
       <RootLayout>
         <Dashboard />
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/farmer/product",
+    path: "/seller/product",
     element: (
       <RootLayout>
         <Farmer />
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/farmer/product-category/list",
+    path: "/seller/product-category/list",
     element: (
       <RootLayout>
         <ProductCategory />
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/farmer/product-category/create",
+    path: "/seller/product-category/create",
     element: (
       <RootLayout>
         <ProductCategoryCreate />
@@ -86,7 +86,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/seller/dashboard",
+    path: "/farmer/dashboard",
     element: (
       <RootLayout>
         <SelDash />

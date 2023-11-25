@@ -41,7 +41,7 @@ function App() {
           }
         />
         <Route
-          path="/farmer/dashboard"
+          path="/seller/dashboard"
           element={
             <RootLayout>
               <Dashboard />
@@ -49,7 +49,7 @@ function App() {
           }
         />
         <Route
-          path="/farmer/product"
+          path="/seller/product"
           element={
             <RootLayout>
               <Farmer />
@@ -57,7 +57,7 @@ function App() {
           }
         />
         <Route
-          path="/farmer/product-category/index"
+          path="/seller/product-category/index"
           element={
             <RootLayout>
               <ProductCategory />
@@ -65,7 +65,7 @@ function App() {
           }
         />
         <Route
-          path="/farmer/product-category/create"
+          path="/seller/product-category/create"
           element={
             <RootLayout>
               <ProductCategoryCreate />
@@ -89,7 +89,7 @@ function App() {
           }
         />
         <Route
-          path="/seller/dashboard"
+          path="/farmer/dashboard"
           element={
             <RootLayout>
               <SelDash />
