@@ -11,7 +11,7 @@ function Navbar() {
   return (
     <div className="flex justify-center w-full">
       <div className="fixed z-10 border border-red-200 rounded-full py-2 px-4 mt-4 flex items-center justify-between bg-white w-3/4">
-        <img src="/img/logo.png" alt="logo" width={50} />
+        <img src="/img/site_logo.png" alt="logo" width={50} />
         <div className="flex items-center gap-4 font-semibold">
           <Link element={<Home />} to="/">
             Home
