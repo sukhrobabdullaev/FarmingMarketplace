@@ -8,9 +8,9 @@ import Farmer from "../pages/Farmer";
 import Farming from "../pages/users/Farming";
 import Chemicals from "../pages/users/Chemicals";
 import ProductCategory from "../pages/users/ProductCategory";
-import ProductCategoryCreate from "../pages/users/ProductCategoryCreate";
 import Dashboard from "../components/Dashboard";
 import SelDash from "../components/sellers/Dash";
+import Product from "../components/sellers/Product";
 
 const router = createBrowserRouter([
   {
@@ -54,18 +54,18 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/seller/product-category/list",
+    path: "/seller/product/list",
     element: (
       <RootLayout>
-        <ProductCategory />
+        <Product />
       </RootLayout>
     ),
   },
   {
-    path: "/seller/product-category/create",
+    path: "/seller/product-category/list",
     element: (
       <RootLayout>
-        <ProductCategoryCreate />
+        <ProductCategory />
       </RootLayout>
     ),
   },

@@ -10,6 +10,8 @@ import ReactInputVerificationCode from "react-input-verification-code";
 import { toast } from "react-toastify";
 import bg from "../assets/bg.jpg";
 import { baseUrl } from "./users/ProductCategory";
+import eImzo from "../assets/e-imzoooo.png";
+import oneId from "../assets/one-id.svg";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -155,6 +157,12 @@ function SignUp() {
                   Sign Up
                 </Button>
               </Form.Item>
+              <div style={{ width: "100px", height: "60px" }}>
+                <img style={{ width: "100%" }} src={oneId} alt="" />
+              </div>
+              <div style={{ width: "100px", height: "60px" }}>
+                <img style={{ width: "100%" }} src={eImzo} alt="" />
+              </div>
             </Form>
           ) : (
             <Form

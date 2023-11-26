@@ -1,12 +1,12 @@
 import React from "react";
-import { Card, Col, Row } from "antd";
+import { Card, Col, Row, Button } from "antd";
 import { useUserData } from "../../hooks/useUserData";
 import { useNavigate } from "react-router-dom";
 import AppLoader from "../AppLoader";
 import { ArrowDownOutlined } from "@ant-design/icons";
 
 const Dashboard = () => {
-  //   let navigate = useNavigate();
+  let navigate = useNavigate();
 
   const { data: userProfile, isLoading, isError } = useUserData();
 
@@ -46,6 +46,12 @@ const Dashboard = () => {
                 <span className="text-green-500">{userProfile?.role}</span>
               </Card>
             </Card>
+            <Button
+              className="bg-amber-500 mt-4 text-white"
+              onClick={() => navigate("/seller/product")}
+            >
+              Mahsulotlar
+            </Button>
           </Col>
           <Col span={8}>
             <Card title="Activity" bordered={false} className="bg-blue-400">

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button, Modal, Input } from "antd";
 import { useNavigate } from "react-router-dom";
+import { Card } from "antd";
+const { Meta } = Card;
 
 export const baseUrl = "https://api.farm.ustadev.uz/v1";
 
-const ProductCategory = () => {
+const Product = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
@@ -90,7 +92,7 @@ const ProductCategory = () => {
   };
 
   useEffect(() => {
-    fetch("https://api.farm.ustadev.uz/v1/user/product-category/index", {
+    fetch("https://api.farm.ustadev.uz/v1/user/product", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -99,8 +101,8 @@ const ProductCategory = () => {
 
   return (
     <div className="mt-32 max-w-[1200px] mx-auto">
-      <div className="flex justify-center mt-10">
-        <Button onClick={showModal}>Kategoriya qo'shish</Button>
+      {/* <div className="flex justify-center mt-10">
+        <Button onClick={showModal}>Open Modal</Button>
       </div>
       <Modal
         open={isEditOpen}
@@ -124,29 +126,31 @@ const ProductCategory = () => {
             value={input}
           />
         </div>
-      </Modal>
+      </Modal> */}
       <h1 className="text-center text-3xl font-bold my-5">
-        Kategoriyalar indeksi
+        Mahsulotlar indeksi
       </h1>
-      <table border="1" className="w-full">
-        <tbody>
-          {list.map((item, index) => (
-            <tr
-              key={index}
-              className="mt-5 flex justify-between border-b-2 border-black"
-            >
-              <td>{index + 1}</td>
-              <td>{item.name}</td>
-              <td>
-                <Button onClick={() => handleEdit(item.id)}>Edit</Button>
-                <Button onClick={() => handleDelete(item.id)}>Delete</Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="grid grid-cols-3 justify-center justify-items-center gap-6 mt-10">
+        {list.map((item, index) => (
+          <Card
+            hoverable
+            style={{ width: 350 }}
+            cover={
+              <img
+                alt="example"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWeScQL8ymcm4z-S-zLQYMLXnZkXyQ-0WoUQ&usqp=CAU"
+              />
+            }
+          >
+            <Meta
+              title={`${item.name}, ${item.price} so'm`}
+              description={`${item.sub_text}`}
+            />
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default ProductCategory;
+export default Product;

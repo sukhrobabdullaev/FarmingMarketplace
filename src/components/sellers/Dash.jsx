@@ -17,7 +17,7 @@ const SelDash = () => {
   if (isError) {
     return <div>Error fetching user data</div>;
   }
-  
+
   return (
     <div
       style={{
@@ -28,7 +28,7 @@ const SelDash = () => {
     >
       <div className="pt-24 max-w-[1200px] mx-auto">
         <h3 className="text-blue-600 text-center text-[30px] mb-6">SelDash</h3>
-        {/* <Row gutter={16} className="flex justify-around ">
+        <Row gutter={16} className="flex justify-around ">
           <Col span={8}>
             <Card title="My Details" bordered={false} className="bg-blue-400 ">
               <Card bordered={true} className="font-semibold text-[14px]">
@@ -72,7 +72,7 @@ const SelDash = () => {
               </Card>
             </Card>
           </Col>
-        </Row> */}
+        </Row>
       </div>
     </div>
   );

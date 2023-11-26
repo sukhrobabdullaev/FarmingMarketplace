@@ -11,6 +11,7 @@ import ProductCategory from "./pages/users/ProductCategory";
 import ProductCategoryCreate from "./pages/users/ProductCategoryCreate";
 import Dashboard from "./components/farmers/Dashboard";
 import SelDash from "./components/sellers/Dash";
+import Product from "./components/sellers/Product";
 
 function App() {
   return (
@@ -57,7 +58,7 @@ function App() {
           }
         />
         <Route
-          path="/seller/product-category/index"
+          path="/seller/product-category/list"
           element={
             <RootLayout>
               <ProductCategory />
@@ -65,10 +66,10 @@ function App() {
           }
         />
         <Route
-          path="/seller/product-category/create"
+          path="/seller/product/list"
           element={
             <RootLayout>
-              <ProductCategoryCreate />
+              <Product />
             </RootLayout>
           }
         />
