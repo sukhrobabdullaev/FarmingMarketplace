@@ -14,23 +14,23 @@ function Navbar() {
         <img src="/img/site_logo.png" alt="logo" width={50} />
         <div className="flex items-center gap-4 font-semibold">
           <Link element={<Home />} to="/">
-            Home
+            Bosh sahifa
           </Link>
-          <Link to="/chemicals">Chemicals</Link>
-          <Link to="/farming">Farming</Link>
+          <Link to="/chemicals">Kimyoviy mahsulotlar</Link>
+          <Link to="/farming">Fermerchilik</Link>
           {!selectComponent && !selectRole ? (
             <>
               <Link
                 className="text-orange-500 hover:text-orange-300 "
                 to="/signUp"
               >
-                Sign Up
+                Ro'yxatdan o'tish
               </Link>
               <Link
                 className="text-orange-500 hover:text-orange-300"
                 to="/signIn"
               >
-                Sign In
+                Kirish
               </Link>
             </>
           ) : (
